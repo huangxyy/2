@@ -1,0 +1,55 @@
+.terminal-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #1e1e1e;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #2d2d2d;
+  color: #ffffff;
+  font-family: monospace;
+}
+
+.terminal-wrapper {
+  flex: 1;
+  padding: 8px;
+}
+
+.terminal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 12px;
+  background-color: #2d2d2d;
+  color: #999999;
+  font-size: 12px;
+}
+
+.terminal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4caf50;
+}
+
+.terminal-status[data-status='error']::before {
+  background-color: #f44336;
+}
+
+.terminal-status[data-status='disconnected']::before {
+  background-color: #ff9800;
+}

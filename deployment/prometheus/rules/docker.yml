@@ -1,0 +1,20 @@
+groups:
+  - name: docker
+    rules:
+      - alert: ContainerDown
+        expr: absent(container_last_seen{container_label_com_docker_compose_service=~".+"})
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: Container down
+          description: "Container {{ $labels.container }} is down"
+
+      - alert: HighCPUUsage
+        expr: sum(rate(container_cpu_usage_seconds_total[5m])) by (container_label_com_docker_compose_service) > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High CPU usage
+          description: "Container {{ $labels.container_label_com_docker_compose_service }} is using more than 80% CPU"
